@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="1024.0" prefWidth="1440.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="1024.0" prefWidth="1440.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.controller.AdminHomepageController">
    <children>
       <AnchorPane layoutX="24.0" layoutY="24.0" prefHeight="977.0" prefWidth="1392.0">
          <children>
@@ -27,7 +27,7 @@
                <children>
                   <VBox layoutX="1.0" layoutY="1.0" prefHeight="830.0" prefWidth="320.0">
                      <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ホームページ" textAlignment="CENTER" underline="true" wrappingWidth="320.0">
+                        <Text onMouseClicked="#adHomepageClick" strokeType="OUTSIDE" strokeWidth="0.0" text="ホームページ" textAlignment="CENTER" underline="true" wrappingWidth="320.0">
                            <font>
                               <Font size="50.0" />
                            </font>
@@ -35,7 +35,7 @@
                               <Insets top="50.0" />
                            </VBox.margin>
                         </Text>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ユーザー" textAlignment="CENTER" wrappingWidth="320.0">
+                        <Text onMouseClicked="#userManageClick" strokeType="OUTSIDE" strokeWidth="0.0" text="ユーザー" textAlignment="CENTER" wrappingWidth="320.0">
                            <font>
                               <Font size="50.0" />
                            </font>
@@ -43,7 +43,7 @@
                               <Insets top="20.0" />
                            </VBox.margin>
                         </Text>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="テンプレート" textAlignment="CENTER" wrappingWidth="320.0">
+                        <Text onMouseClicked="#TemplateManageClick" strokeType="OUTSIDE" strokeWidth="0.0" text="テンプレート" textAlignment="CENTER" wrappingWidth="320.0">
                            <font>
                               <Font size="50.0" />
                            </font>
@@ -92,7 +92,7 @@
                                     </Text>
                                  </children>
                               </VBox>
-                              <Button mnemonicParsing="false" style="-fx-background-color: #ff0000;" text="LOGOUT" textFill="WHITE">
+                              <Button mnemonicParsing="false" onAction="#logOutEnter" style="-fx-background-color: #ff0000;" text="LOGOUT" textFill="WHITE">
                                  <HBox.margin>
                                     <Insets left="30.0" top="70.0" />
                                  </HBox.margin>

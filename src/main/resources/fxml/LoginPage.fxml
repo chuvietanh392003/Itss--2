@@ -15,7 +15,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.controller.LoginController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.controller.LoginController">
    <children>
       <AnchorPane prefHeight="977.0" prefWidth="1392.0" style="-fx-border-color: #000;" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="24.0" AnchorPane.rightAnchor="24.0" AnchorPane.topAnchor="22.0">
          <children>
@@ -58,7 +58,7 @@
                                     <Insets />
                                  </HBox.margin>
                               </CheckBox>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="パスワードを忘れた" underline="true">
+                              <Text onMouseClicked="#passwordRecoveryClick" strokeType="OUTSIDE" strokeWidth="0.0" text="パスワードを忘れた" underline="true">
                                  <HBox.margin>
                                     <Insets left="75.0" />
                                  </HBox.margin>
@@ -94,7 +94,7 @@
                                     <Insets left="15.0" right="10.0" />
                                  </HBox.margin>
                               </Label>
-                              <Text fill="#0030dd" strokeType="OUTSIDE" strokeWidth="0.0" text="登録はこちら" underline="true">
+                              <Text fill="#0030dd" onMouseClicked="#signupClick" strokeType="OUTSIDE" strokeWidth="0.0" text="登録はこちら" underline="true">
                                  <font>
                                     <Font size="19.0" />
                                  </font>

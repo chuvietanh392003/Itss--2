@@ -13,7 +13,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="1024.0" prefWidth="1440.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="1024.0" prefWidth="1440.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.controller.UserManageController">
    <children>
       <AnchorPane layoutX="24.0" layoutY="24.0" prefHeight="977.0" prefWidth="1392.0">
          <children>
@@ -30,7 +30,7 @@
                <children>
                   <VBox layoutX="1.0" layoutY="1.0" prefHeight="830.0" prefWidth="320.0">
                      <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ホームページ" textAlignment="CENTER" wrappingWidth="320.0">
+                        <Text onMouseClicked="#adHomepageClick" strokeType="OUTSIDE" strokeWidth="0.0" text="ホームページ" textAlignment="CENTER" wrappingWidth="320.0">
                            <font>
                               <Font size="50.0" />
                            </font>
@@ -38,7 +38,7 @@
                               <Insets top="50.0" />
                            </VBox.margin>
                         </Text>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ユーザー" textAlignment="CENTER" underline="true" wrappingWidth="320.0">
+                        <Text onMouseClicked="#userManageClick" strokeType="OUTSIDE" strokeWidth="0.0" text="ユーザー" textAlignment="CENTER" underline="true" wrappingWidth="320.0">
                            <font>
                               <Font size="50.0" />
                            </font>
@@ -46,7 +46,7 @@
                               <Insets top="20.0" />
                            </VBox.margin>
                         </Text>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="テンプレート" textAlignment="CENTER" wrappingWidth="320.0">
+                        <Text onMouseClicked="#TemplateManageClick" strokeType="OUTSIDE" strokeWidth="0.0" text="テンプレート" textAlignment="CENTER" wrappingWidth="320.0">
                            <font>
                               <Font size="50.0" />
                            </font>
@@ -68,7 +68,7 @@
                         <Insets left="50.0" top="30.0" />
                      </HBox.margin>
                   </Text>
-                  <Button maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" prefHeight="50.0" prefWidth="170.0" style="-fx-background-color: #3cf124; -fx-border-color: #000;" text="＋ ユーザー" textFill="WHITE">
+                  <Button maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#addUserEnter" prefHeight="50.0" prefWidth="170.0" style="-fx-background-color: #3cf124; -fx-border-color: #000;" text="＋ ユーザー" textFill="WHITE">
                      <font>
                         <Font size="24.0" />
                      </font>
@@ -84,12 +84,12 @@
                      <children>
                         <HBox prefHeight="60.0" prefWidth="935.0" style="-fx-border-color: #000;">
                            <children>
-                              <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: #ff0000;" text="DEL" textFill="#f5f5f5">
+                              <Button mnemonicParsing="false" onAction="#deleteUserEnter" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: #ff0000;" text="DEL" textFill="#f5f5f5">
                                  <HBox.margin>
                                     <Insets left="30.0" top="10.0" />
                                  </HBox.margin>
                               </Button>
-                              <TextField prefHeight="30.0" prefWidth="200.0">
+                              <TextField fx:id="searchField" prefHeight="30.0" prefWidth="200.0">
                                  <HBox.margin>
                                     <Insets left="570.0" top="15.0" />
                                  </HBox.margin>
@@ -101,49 +101,49 @@
                               </Button>
                            </children>
                         </HBox>
-                        <TableView maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="580.0" prefWidth="927.0">
+                        <TableView fx:id="userTable" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="580.0" prefWidth="927.0">
                           <columns>
-                            <TableColumn prefWidth="212.0" text="名前" />
-                            <TableColumn prefWidth="444.0" text="メール" />
-                              <TableColumn prefWidth="278.0" text="作成日" />
+                            <TableColumn fx:id="usernameColumn" prefWidth="212.0" text="名前" />
+                            <TableColumn fx:id="gmailColumn" prefWidth="444.0" text="メール" />
+                              <TableColumn fx:id="createdAtColumn" prefWidth="278.0" text="作成日" />
                           </columns>
                            <VBox.margin>
                               <Insets left="5.0" top="5.0" />
                            </VBox.margin>
                         </TableView>
-                        <HBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="45.0" prefWidth="949.0">
+                        <HBox fx:id="paginationButtons" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="45.0" prefWidth="949.0">
                            <children>
-                              <Button maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" prefHeight="20.0" prefWidth="40.0" style="-fx-background-color: #fff; -fx-border-color: #000;" text="&lt;&lt;">
+                              <Button maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#goToFirstPage" prefHeight="20.0" prefWidth="40.0" style="-fx-background-color: #fff; -fx-border-color: #000;" text="&lt;&lt;">
                                  <HBox.margin>
                                     <Insets left="340.0" top="10.0" />
                                  </HBox.margin>
                               </Button>
-                              <Button maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" prefHeight="20.0" prefWidth="40.0" style="-fx-background-color: #fff; -fx-border-color: #000;" text="&lt;">
+                              <Button maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#goToPreviousPage" prefHeight="20.0" prefWidth="40.0" style="-fx-background-color: #fff; -fx-border-color: #000;" text="&lt;">
                                  <HBox.margin>
                                     <Insets left="5.0" top="10.0" />
                                  </HBox.margin>
                               </Button>
-                              <Button maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" prefHeight="20.0" prefWidth="35.0" style="-fx-background-color: #fff; -fx-border-color: #000;" text="1">
+                              <Button maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#goToFirstPage" prefHeight="20.0" prefWidth="35.0" style="-fx-background-color: #fff; -fx-border-color: #000;" text="1">
                                  <HBox.margin>
                                     <Insets left="5.0" top="10.0" />
                                  </HBox.margin>
                               </Button>
-                              <Button maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" prefHeight="20.0" prefWidth="35.0" style="-fx-background-color: #fff; -fx-border-color: #000;" text="2">
+                              <Button maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#goToSecondPage" prefHeight="20.0" prefWidth="35.0" style="-fx-background-color: #fff; -fx-border-color: #000;" text="2">
                                  <HBox.margin>
                                     <Insets left="5.0" top="10.0" />
                                  </HBox.margin>
                               </Button>
-                              <Button maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" prefHeight="20.0" prefWidth="35.0" style="-fx-background-color: #fff; -fx-border-color: #000;" text="3">
+                              <Button maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#goToThirdPage" prefHeight="20.0" prefWidth="35.0" style="-fx-background-color: #fff; -fx-border-color: #000;" text="3">
                                  <HBox.margin>
                                     <Insets left="5.0" top="10.0" />
                                  </HBox.margin>
                               </Button>
-                              <Button maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" prefHeight="20.0" prefWidth="40.0" style="-fx-background-color: #fff; -fx-border-color: #000;" text="&gt;">
+                              <Button maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#goToNextPage" prefHeight="20.0" prefWidth="40.0" style="-fx-background-color: #fff; -fx-border-color: #000;" text="&gt;">
                                  <HBox.margin>
                                     <Insets left="5.0" top="10.0" />
                                  </HBox.margin>
                               </Button>
-                              <Button maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" prefHeight="20.0" prefWidth="40.0" style="-fx-background-color: #fff; -fx-border-color: #000;" text="&gt;&gt;">
+                              <Button maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#goToLastPage" prefHeight="20.0" prefWidth="40.0" style="-fx-background-color: #fff; -fx-border-color: #000;" text="&gt;&gt;">
                                  <HBox.margin>
                                     <Insets left="5.0" top="10.0" />
                                  </HBox.margin>
