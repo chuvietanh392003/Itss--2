@@ -145,4 +145,5 @@ INSERT INTO TemplateLanguage (TemplateID, LanguageID, translated_title, translat
 (3, 1, 'Template báo cáo đi muộn', 'Đây là mẫu template dùng để báo cáo đi muộn, lý do đi muộn và thời gian dự kiến đến lớp.'),
 (3, 2, '遅刻報告テンプレート', '遅刻の報告、遅刻理由、および到着予定時間のためのテンプレートです。');
 
-select * from user
+
+select * from Template;
