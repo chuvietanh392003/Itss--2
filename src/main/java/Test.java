@@ -1,7 +1,7 @@
 package main.java;
 
 import java.util.List;
-import main.java.model.User; // Đảm bảo bạn đã import đúng lớp User
+import main.java.model.User; 
 import main.java.repository.UserRepository; 
 public class Test {
     public static void main(String[] args) {

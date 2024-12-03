@@ -2,6 +2,8 @@ package main.java.controller;
 
 import java.io.IOException;
 
+import javax.swing.SwingUtilities;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -15,6 +17,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import main.java.model.User;
 import main.java.repository.UserRepository;
+import main.java.view.AddUserView;
 
 public class UserManageController extends BaseController {
 
@@ -174,7 +177,23 @@ public class UserManageController extends BaseController {
     
     @FXML
     void addUserEnter(ActionEvent event) {
+        SwingUtilities.invokeLater(() -> {
+            AddUserView addUserView = new AddUserView();
+            new AddUserController(addUserView, userRepository);
 
+            // Thêm listener để kiểm tra khi cửa sổ đóng
+            addUserView.addWindowListener(new java.awt.event.WindowAdapter() {
+                @Override
+                public void windowClosed(java.awt.event.WindowEvent e) {
+                    // Tải lại danh sách người dùng sau khi đóng cửa sổ
+                    userList.clear();
+                    userList.addAll(userRepository.getAllUsers());
+                    setupPagination(); // Cập nhật lại bảng
+                }
+            });
+
+            addUserView.setVisible(true);
+        });
     }
     
     @FXML

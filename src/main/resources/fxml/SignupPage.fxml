@@ -29,7 +29,7 @@
                <children>
                   <VBox prefHeight="685.0" prefWidth="541.0">
                      <children>
-                        <TextField prefHeight="82.0" prefWidth="446.0" promptText="ユーザー名">
+                        <TextField fx:id="userNameField" prefHeight="82.0" prefWidth="446.0" promptText="ユーザー名">
                            <font>
                               <Font size="32.0" />
                            </font>
@@ -37,7 +37,7 @@
                               <Insets left="49.0" right="49.0" top="62.0" />
                            </VBox.margin>
                         </TextField>
-                        <TextField prefHeight="82.0" prefWidth="446.0" promptText="メール">
+                        <TextField fx:id="mailField" prefHeight="82.0" prefWidth="446.0" promptText="メール">
                            <font>
                               <Font size="32.0" />
                            </font>
@@ -45,7 +45,7 @@
                               <Insets left="49.0" right="49.0" top="24.0" />
                            </VBox.margin>
                         </TextField>
-                        <TextField prefHeight="82.0" prefWidth="446.0" promptText="パスワード">
+                        <TextField fx:id="pwField" prefHeight="82.0" prefWidth="446.0" promptText="パスワード">
                            <VBox.margin>
                               <Insets left="49.0" right="49.0" top="24.0" />
                            </VBox.margin>
@@ -53,7 +53,7 @@
                               <Font size="32.0" />
                            </font>
                         </TextField>
-                        <TextField prefHeight="82.0" prefWidth="446.0" promptText="パスワードの確認">
+                        <TextField fx:id="pwFVerifyField" prefHeight="82.0" prefWidth="446.0" promptText="パスワードの確認">
                            <font>
                               <Font size="32.0" />
                            </font>
@@ -61,7 +61,7 @@
                               <Insets left="49.0" right="49.0" top="24.0" />
                            </VBox.margin>
                         </TextField>
-                        <Button mnemonicParsing="false" prefHeight="65.0" prefWidth="446.0" style="-fx-background-color: #1D86FF;" text="登録">
+                        <Button mnemonicParsing="false" onAction="#signupBtnEnter" prefHeight="65.0" prefWidth="446.0" style="-fx-background-color: #1D86FF;" text="登録">
                            <VBox.margin>
                               <Insets left="49.0" right="49.0" top="56.0" />
                            </VBox.margin>
@@ -79,7 +79,7 @@
                                     <Font size="19.0" />
                                  </font>
                               </Text>
-                              <Text fill="#0030dd" strokeType="OUTSIDE" strokeWidth="0.0" text="ログイン" underline="true">
+                              <Text fill="#0030dd" onMouseClicked="#loginEnter" strokeType="OUTSIDE" strokeWidth="0.0" text="ログイン" underline="true">
                                  <font>
                                     <Font size="19.0" />
                                  </font>
