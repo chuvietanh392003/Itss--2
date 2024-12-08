@@ -12,7 +12,6 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
 <AnchorPane prefHeight="630.0" prefWidth="1120.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <AnchorPane layoutX="20.0" layoutY="14.0" prefHeight="110.0" prefWidth="1080.0" style="-fx-border-color: #000;">
@@ -106,9 +105,6 @@
                                  </VBox.margin>
                               </Text>
                               <TextArea prefHeight="40.0" prefWidth="310.0" promptText="ユーザー名">
-                                 <font>
-                                    <Font size="13.0" />
-                                 </font>
                                  <VBox.margin>
                                     <Insets left="70.0" right="200.0" />
                                  </VBox.margin>
@@ -125,10 +121,7 @@
                                     <Insets left="70.0" />
                                  </VBox.margin>
                               </Text>
-                              <TextArea prefHeight="24.0" prefWidth="330.0" promptText="メール">
-                                 <font>
-                                    <Font size="14.0" />
-                                 </font>
+                              <TextArea prefHeight="24.0" prefWidth="245.0" promptText="メール">
                                  <VBox.margin>
                                     <Insets left="70.0" right="200.0" />
                                  </VBox.margin>
@@ -187,9 +180,6 @@
                                  </VBox.margin>
                               </Text>
                               <TextArea prefHeight="40.0" prefWidth="310.0" promptText="新しいパスワード">
-                                 <font>
-                                    <Font size="13.0" />
-                                 </font>
                                  <VBox.margin>
                                     <Insets left="70.0" right="200.0" />
                                  </VBox.margin>
@@ -207,9 +197,6 @@
                                  </VBox.margin>
                               </Text>
                               <TextArea prefHeight="24.0" prefWidth="330.0" promptText="パスワードの確認">
-                                 <font>
-                                    <Font size="14.0" />
-                                 </font>
                                  <VBox.margin>
                                     <Insets left="70.0" right="200.0" />
                                  </VBox.margin>
