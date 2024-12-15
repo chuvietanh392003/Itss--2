@@ -1,69 +1,86 @@
--- DROP DATABASE IF EXISTS itss;
+-- Xóa cơ sở dữ liệu nếu đã tồn tại
+DROP DATABASE IF EXISTS itss;
 
--- Tạo cơ sở dữ liệu nếu chưa tồn tại
+-- Tạo cơ sở dữ liệu mới
 CREATE DATABASE IF NOT EXISTS itss;
+
 USE itss;
 
 -- Bảng Template
 CREATE TABLE Template (
-    TemplateID INT AUTO_INCREMENT PRIMARY KEY,
-    title VARCHAR(255) NOT NULL,
-    description TEXT NULL,
-    favorite BOOLEAN DEFAULT FALSE,
-    tag VARCHAR(255) NULL,
-    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+    TemplateID INT AUTO_INCREMENT PRIMARY KEY,  -- ID template, tự động tăng
+    title VARCHAR(255) NOT NULL,  -- Tiêu đề template
+    description TEXT NULL,  -- Mô tả template
+    favorite BOOLEAN DEFAULT FALSE,  -- Trường yêu thích, mặc định là FALSE
+    tag VARCHAR(255) NULL,  -- Các tag liên quan đến template
+    view_count INT DEFAULT 0,  -- Số lượt xem template, mặc định là 0
+    save_count INT DEFAULT 0,  -- Số lượt lưu template, mặc định là 0
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,  -- Thời gian tạo template
+    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP  -- Thời gian cập nhật template
 );
 
--- Bảng User (Thay vì phân biệt student và teacher, ta dùng is_admin)
+-- Bảng User (Bao gồm cả admin và người dùng thông thường)
 CREATE TABLE User (
-    UserID INT AUTO_INCREMENT PRIMARY KEY,
-    username VARCHAR(255) UNIQUE NOT NULL,
-    email VARCHAR(255) UNIQUE NOT NULL,
-    password VARCHAR(255) NOT NULL,
+    UserID INT AUTO_INCREMENT PRIMARY KEY,  -- ID người dùng, tự động tăng
+    username VARCHAR(255) UNIQUE NOT NULL,  -- Tên đăng nhập, phải là duy nhất
+    email VARCHAR(255) UNIQUE NOT NULL,  -- Địa chỉ email, phải là duy nhất
+    password VARCHAR(255) NOT NULL,  -- Mật khẩu
     is_admin BOOLEAN DEFAULT FALSE,  -- Thêm trường is_admin để phân biệt người dùng và admin
-    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP  -- Thời gian tạo tài khoản
 );
 
 -- Bảng Manage (Quản lý các Admin)
 CREATE TABLE Manage (
-    AdminID INT NOT NULL,
-    TemplateID INT NOT NULL,
-    ManageDate DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    PRIMARY KEY (AdminID, TemplateID),
-    FOREIGN KEY (AdminID) REFERENCES User(UserID) ON DELETE CASCADE,  -- Thay AdminID bằng UserID từ bảng User
-    FOREIGN KEY (TemplateID) REFERENCES Template(TemplateID) ON DELETE CASCADE
+    AdminID INT NOT NULL,  -- ID của Admin
+    TemplateID INT NOT NULL,  -- ID của Template
+    ManageDate DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,  -- Ngày quản lý template
+    PRIMARY KEY (AdminID, TemplateID),  -- Khóa chính là sự kết hợp của AdminID và TemplateID
+    FOREIGN KEY (AdminID) REFERENCES User(UserID) ON DELETE CASCADE,  -- Tham chiếu đến bảng User
+    FOREIGN KEY (TemplateID) REFERENCES Template(TemplateID) ON DELETE CASCADE  -- Tham chiếu đến bảng Template
 );
 
--- Bảng UserTemplate
+-- Bảng UserTemplate (Lưu trữ mối quan hệ giữa người dùng và template)
 CREATE TABLE UserTemplate (
-    UserID INT NOT NULL,
-    TemplateID INT NOT NULL,
-    is_favorite BOOLEAN DEFAULT FALSE,
-    usage_count INT DEFAULT 0, -- Số lần sử dụng template
-    last_used DATETIME DEFAULT CURRENT_TIMESTAMP,
-    PRIMARY KEY (UserID, TemplateID),
-    FOREIGN KEY (UserID) REFERENCES User(UserID) ON DELETE CASCADE,
-    FOREIGN KEY (TemplateID) REFERENCES Template(TemplateID) ON DELETE CASCADE
+    UserID INT NOT NULL,  -- ID người dùng
+    TemplateID INT NOT NULL,  -- ID template
+    is_favorite BOOLEAN DEFAULT FALSE,  -- Trường yêu thích, mặc định là FALSE
+    usage_count INT DEFAULT 0,  -- Số lần sử dụng template
+    last_used DATETIME DEFAULT CURRENT_TIMESTAMP,  -- Thời gian sử dụng cuối cùng
+    PRIMARY KEY (UserID, TemplateID),  -- Khóa chính là sự kết hợp của UserID và TemplateID
+    FOREIGN KEY (UserID) REFERENCES User(UserID) ON DELETE CASCADE,  -- Tham chiếu đến bảng User
+    FOREIGN KEY (TemplateID) REFERENCES Template(TemplateID) ON DELETE CASCADE  -- Tham chiếu đến bảng Template
 );
 
--- Bảng Language
+-- Bảng Language (Lưu trữ thông tin về ngôn ngữ)
 CREATE TABLE Language (
-    LanguageID INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(255) NOT NULL, -- Tên ngôn ngữ (ví dụ: "Tiếng Việt", "Tiếng Nhật")
-    code VARCHAR(10) NOT NULL -- Mã ngôn ngữ (ví dụ: "vi", "ja")
+    LanguageID INT AUTO_INCREMENT PRIMARY KEY,  -- ID ngôn ngữ, tự động tăng
+    name VARCHAR(255) NOT NULL,  -- Tên ngôn ngữ (Ví dụ: "Tiếng Việt", "Tiếng Nhật")
+    code VARCHAR(10) NOT NULL  -- Mã ngôn ngữ (Ví dụ: "vi", "ja")
 );
 
 -- Bảng TemplateLanguage (Liên kết giữa Template và Language)
 CREATE TABLE TemplateLanguage (
-    TemplateID INT NOT NULL,
-    LanguageID INT NOT NULL,
-    translated_title VARCHAR(255) NOT NULL, -- Tiêu đề của template theo ngôn ngữ
-    translated_description TEXT NULL, -- Mô tả của template theo ngôn ngữ
-    PRIMARY KEY (TemplateID, LanguageID),
-    FOREIGN KEY (TemplateID) REFERENCES Template(TemplateID) ON DELETE CASCADE,
-    FOREIGN KEY (LanguageID) REFERENCES Language(LanguageID) ON DELETE CASCADE
+    TemplateID INT NOT NULL,  -- ID của template
+    LanguageID INT NOT NULL,  -- ID của ngôn ngữ
+    translated_title VARCHAR(255) NOT NULL,  -- Tiêu đề của template theo ngôn ngữ
+    translated_description TEXT NULL,  -- Mô tả của template theo ngôn ngữ
+    PRIMARY KEY (TemplateID, LanguageID),  -- Khóa chính là sự kết hợp của TemplateID và LanguageID
+    FOREIGN KEY (TemplateID) REFERENCES Template(TemplateID) ON DELETE CASCADE,  -- Tham chiếu đến bảng Template
+    FOREIGN KEY (LanguageID) REFERENCES Language(LanguageID) ON DELETE CASCADE  -- Tham chiếu đến bảng Language
 );
+
+
+-- Tạo bảng TemplateDetail
+CREATE TABLE TemplateDetail (
+    TemplateDetailID INT AUTO_INCREMENT PRIMARY KEY,  -- ID tự động tăng của TemplateDetail
+    TemplateID INT NOT NULL,  -- Tham chiếu đến bảng Template
+    template_text TEXT NOT NULL,  -- Nội dung template chi tiết
+    template_setsumei TEXT NOT NULL,  -- Giải thích về template
+    FOREIGN KEY (TemplateID) REFERENCES Template(TemplateID) ON DELETE CASCADE  -- Liên kết với Template, tự động xóa khi Template bị xóa
+);
+
+-- Thêm dữ liệu mẫu vào bảng TemplateDetail
+
 
 -- Thêm dữ liệu vào bảng Language
 INSERT INTO Language (name, code) VALUES
@@ -71,11 +88,28 @@ INSERT INTO Language (name, code) VALUES
 ('Tiếng Nhật', 'ja'),
 ('Tiếng Anh', 'en');
 
--- Thêm dữ liệu vào bảng Template cho các tình huống Hourensou
+-- Thêm dữ liệu vào bảng Template
 INSERT INTO Template (title, description, favorite, tag) VALUES
 ('Template xin nghỉ học', 'Đây là template dành cho việc xin nghỉ học hoặc báo cáo nghỉ học tạm thời.', TRUE, 'hourensou, xin nghỉ học, báo cáo'),
 ('Template báo cáo kéo dài thời gian làm bài', 'Template này dùng để báo cáo kéo dài thời gian làm bài kiểm tra, bài tập hoặc dự án.', FALSE, 'hourensou, kéo dài thời gian, báo cáo'),
-('Template báo cáo đi muộn', 'Đây là template dùng để báo cáo việc đi muộn, lý do đi muộn và thời gian dự kiến đến.', TRUE, 'hourensou, đi muộn, báo cáo');
+('Template báo cáo đi muộn', 'Đây là template dùng để báo cáo việc đi muộn, lý do đi muộn và thời gian dự kiến đến.', TRUE, 'hourensou, đi muộn, báo cáo'),
+('Template xin phép vắng mặt trong buổi họp', 'Template dành cho việc xin phép vắng mặt trong các cuộc họp quan trọng.', FALSE, 'hourensou, vắng mặt, họp'),
+('Template báo cáo tình trạng sức khỏe', 'Template này sử dụng để báo cáo tình trạng sức khỏe không tốt.', TRUE, 'hourensou, sức khỏe, báo cáo'),
+('Template yêu cầu gia hạn deadline dự án', 'Dành cho việc yêu cầu gia hạn deadline do khối lượng công việc lớn hoặc lý do bất khả kháng.', TRUE, 'hourensou, gia hạn, deadline'),
+('Template cập nhật tiến độ công việc', 'Sử dụng để cập nhật tiến độ của các công việc đang được thực hiện.', FALSE, 'hourensou, tiến độ, báo cáo'),
+('Template thông báo thay đổi lịch trình', 'Template này sử dụng để thông báo thay đổi lịch trình công việc hoặc họp.', TRUE, 'hourensou, thay đổi, lịch trình'),
+('Template xin phép làm việc từ xa', 'Dành cho việc xin phép làm việc từ xa vì lý do cá nhân hoặc khách quan.', FALSE, 'hourensou, làm việc từ xa, xin phép'),
+('Template báo cáo kết quả công việc tuần', 'Template này tổng hợp và báo cáo kết quả công việc hàng tuần.', TRUE, 'hourensou, kết quả, báo cáo'),
+('Template báo cáo mất đồ dùng cá nhân', 'Sử dụng để báo cáo trường hợp mất mát đồ dùng cá nhân trong công ty.', FALSE, 'hourensou, mất đồ, báo cáo'),
+('Template xin phép nghỉ dưỡng bệnh', 'Template này dùng để xin nghỉ phép dưỡng bệnh trong thời gian ngắn.', TRUE, 'hourensou, nghỉ dưỡng, sức khỏe'),
+('Template thông báo hoàn thành công việc', 'Dành cho việc thông báo đã hoàn thành công việc hoặc dự án.', TRUE, 'hourensou, hoàn thành, công việc'),
+('Template báo cáo sự cố kỹ thuật', 'Sử dụng để báo cáo các sự cố kỹ thuật phát sinh trong quá trình làm việc.', FALSE, 'hourensou, sự cố, kỹ thuật'),
+('Template xin phép ra ngoài trong giờ làm', 'Dành cho việc xin phép ra ngoài trong giờ làm việc với lý do chính đáng.', TRUE, 'hourensou, ra ngoài, xin phép'),
+('Template thông báo chậm tiến độ', 'Template này sử dụng để thông báo việc chậm tiến độ công việc và đề xuất giải pháp.', FALSE, 'hourensou, chậm tiến độ, báo cáo'),
+('Template báo cáo kết quả học tập', 'Template này dùng để báo cáo kết quả học tập định kỳ của nhân viên.', TRUE, 'hourensou, kết quả học tập, báo cáo'),
+('Template xin phép tham gia khóa đào tạo', 'Dành cho việc xin phép tham gia các khóa đào tạo nội bộ hoặc bên ngoài.', TRUE, 'hourensou, khóa đào tạo, xin phép'),
+('Template yêu cầu công cụ làm việc', 'Sử dụng để yêu cầu cấp phát công cụ làm việc mới hoặc thay thế.', FALSE, 'hourensou, công cụ, yêu cầu'),
+('Template thông báo nghỉ việc', 'Template này dùng để thông báo quyết định nghỉ việc của nhân viên.', TRUE, 'hourensou, nghỉ việc, thông báo');
 
 -- Thêm 20 admin vào bảng User
 INSERT INTO User (username, email, password, is_admin) VALUES
@@ -145,5 +179,120 @@ INSERT INTO TemplateLanguage (TemplateID, LanguageID, translated_title, translat
 (3, 1, 'Template báo cáo đi muộn', 'Đây là mẫu template dùng để báo cáo đi muộn, lý do đi muộn và thời gian dự kiến đến lớp.'),
 (3, 2, '遅刻報告テンプレート', '遅刻の報告、遅刻理由、および到着予定時間のためのテンプレートです。');
 
+INSERT INTO TemplateDetail (TemplateID, template_text, template_setsumei) VALUES
+(1, 
+'\r \n
+[上司の名前] 様\r\n
+お疲れ様です。\r\n
+[日付] にお休みをいただきたく、お願い申し上げます。\r\n
+[理由]（例: 私的な用事、家族のイベント、休養など）により、お休みを希望しています。\r\n
+ご確認いただき、問題があればお知らせいただけると幸いです。\r\n
+必要な手続きがあれば、お知らせください。\r\n
+お手数をおかけしますが、どうぞよろしくお願いいたします。\r\n
+敬具\r\n
+[あなたの名前]\r\n
+[あなたの役職]\r\n', 
+'名前を書くときは、マークを付ける必要があります。姓と名の部分の間'),
+(2, 
+'\r \n
+[プロジェクト名] プロジェクトに関する進捗報告です。\r\n
+現在の進捗率は [進捗率] で、[完了予定日] に完了を予定しています。\r\n
+進行中の課題：[課題内容]\r\n
+次のステップ：[次のタスク]\r\n
+問題や提案があればお知らせください。\r\n
+よろしくお願いいたします。\r\n', 
+'進捗率を記入する際に、現在の状況を正確に記述してください。');
 
+INSERT INTO TemplateDetail (TemplateID, template_text, template_setsumei) VALUES
+(1, 
+'\r\n
+[上司の名前] 様\r\n
+お疲れ様です。\r\n
+[日付] にお休みをいただきたく、お願い申し上げます。\r\n
+[理由]（例: 私的な用事、家族のイベント、休養など）により、お休みを希望しています。\r\n
+ご確認いただき、問題があればお知らせいただけると幸いです。\r\n
+必要な手続きがあれば、お知らせください。\r\n
+お手数をおかけしますが、どうぞよろしくお願いいたします。\r\n
+敬具\r\n
+[あなたの名前]\r\n
+[あなたの役職]\r\n', 
+'名前を書くときは、マークを付ける必要があります。姓と名の部分の間'),
+
+(2, 
+'\r\n
+[プロジェクト名] プロジェクトに関する進捗報告です。\r\n
+現在の進捗率は [進捗率] で、[完了予定日] に完了を予定しています。\r\n
+進行中の課題：[課題内容]\r\n
+次のステップ：[次のタスク]\r\n
+問題や提案があればお知らせください。\r\n
+よろしくお願いいたします。\r\n', 
+'進捗率を記入する際に、現在の状況を正確に記述してください。'),
+
+(3, 
+'\r\n
+[遅刻理由] 様\r\n
+お疲れ様です。\r\n
+[遅刻理由] により、[遅刻時間] に到着予定です。\r\n
+ご迷惑をおかけしますが、よろしくお願いいたします。\r\n
+敬具\r\n
+[あなたの名前]\r\n
+[あなたの役職]\r\n', 
+'遅刻理由や予定到着時刻を具体的に記入してください。'),
+
+(4, 
+'\r\n
+[会議の名前] 会議に関するお知らせです。\r\n
+[会議日時] に[会議内容] が行われます。\r\n
+参加できない場合、必ず事前にお知らせください。\r\n
+ご確認いただき、よろしくお願いいたします。\r\n
+敬具\r\n
+[あなたの名前]\r\n
+[あなたの役職]\r\n', 
+'会議に参加できない場合、理由を記入してください。'),
+
+(5, 
+'\r\n
+[名前] 様\r\n
+お世話になっております。\r\n
+[健康状態] により、[期間] での休養をお願い申し上げます。\r\n
+[必要な手続き] があればお知らせいただければと思います。\r\n
+何卒よろしくお願いいたします。\r\n
+敬具\r\n
+[あなたの名前]\r\n
+[あなたの役職]\r\n', 
+'健康状態について具体的に記述し、期間を明確に記載してください。'),
+
+(6, 
+'\r\n
+[プロジェクト名] プロジェクトに関する進捗報告です。\r\n
+現在の進捗率は [進捗率] で、[完了予定日] に完了を予定しています。\r\n
+進行中の課題：[課題内容]\r\n
+次のステップ：[次のタスク]\r\n
+問題や提案があればお知らせください。\r\n
+よろしくお願いいたします。\r\n', 
+'進捗状況や課題内容について詳細に記述してください。'),
+
+(7, 
+'\r\n
+[仕事名] 仕事に関するお知らせです。\r\n
+[提出期限] に関して、提出期限を延長したいと思います。\r\n
+必要な手続きがあればお知らせいただけますか。\r\n
+お手数ですがよろしくお願いいたします。\r\n
+敬具\r\n
+[あなたの名前]\r\n
+[あなたの役職]\r\n', 
+'提出期限の変更理由を明確に記述してください。'),
+
+(8, 
+'\r\n
+[会議名] 会議に関するお知らせです。\r\n
+[変更内容] 会議の時間または場所が変更になりました。\r\n
+詳細な情報は下記をご確認ください。\r\n
+ご確認いただき、問題があればお知らせください。\r\n
+よろしくお願いいたします。\r\n', 
+'会議の変更内容を明確に伝えることが重要です。');
+
+select * from user;
+-- Kiểm tra dữ liệu
+SELECT * FROM TemplateDetail;
 select * from Template;
