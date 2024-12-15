@@ -1,25 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.text.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="630.0" prefWidth="1120.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="630.0" prefWidth="1120.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.controller.UserTemplateSaveController">
    <children>
       <AnchorPane layoutX="20.0" layoutY="20.0" prefHeight="110.0" prefWidth="1080.0" style="-fx-border-color: #000;">
          <children>
@@ -76,19 +71,22 @@
                               <Insets left="5.0" />
                            </GridPane.margin>
                            <children>
-                              <TextField maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="30.0" prefWidth="370.0" promptText="タイトル">
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="タイトル" wrappingWidth="370.0">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
                                  <VBox.margin>
-                                    <Insets left="10.0" top="5.0" />
+                                    <Insets left="10.0" top="10.0" />
                                  </VBox.margin>
-                              </TextField>
-                              <TextField maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="360.0" promptText="簡単な発明">
+                              </Text>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="簡単な発明" wrappingWidth="360.0">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
                                  <VBox.margin>
                                     <Insets left="15.0" top="5.0" />
                                  </VBox.margin>
-                                 <font>
-                                    <Font size="10.0" />
-                                 </font>
-                              </TextField>
+                              </Text>
                               <HBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="30.0" prefWidth="370.0">
                                  <children>
                                     <Button maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" prefHeight="20.0" prefWidth="25.0" style="-fx-background-color: #FF6A60;" text="D" textFill="WHITE">
@@ -120,19 +118,22 @@
                         </VBox>
                         <VBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="100.0" prefWidth="390.0" style="-fx-background-color: #a0ff74; -fx-border-color: #000;" GridPane.columnIndex="1">
                            <children>
-                              <TextField maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="30.0" prefWidth="370.0" promptText="タイトル">
-                                 <VBox.margin>
-                                    <Insets left="10.0" top="5.0" />
-                                 </VBox.margin>
-                              </TextField>
-                              <TextField maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="360.0" promptText="簡単な発明">
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="タイトル" wrappingWidth="370.0">
                                  <font>
-                                    <Font size="10.0" />
+                                    <Font size="18.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets left="10.0" top="10.0" />
+                                 </VBox.margin>
+                              </Text>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="簡単な発明" wrappingWidth="360.0">
+                                 <font>
+                                    <Font size="14.0" />
                                  </font>
                                  <VBox.margin>
                                     <Insets left="15.0" top="5.0" />
                                  </VBox.margin>
-                              </TextField>
+                              </Text>
                               <HBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="30.0" prefWidth="370.0">
                                  <children>
                                     <Button maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" prefHeight="20.0" prefWidth="25.0" style="-fx-background-color: #FF6A60;" text="D" textFill="WHITE">
@@ -167,19 +168,22 @@
                         </VBox>
                         <VBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="100.0" prefWidth="390.0" style="-fx-background-color: #a0ff74; -fx-border-color: #000;" GridPane.rowIndex="1">
                            <children>
-                              <TextField maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="30.0" prefWidth="370.0" promptText="タイトル">
-                                 <VBox.margin>
-                                    <Insets left="10.0" top="5.0" />
-                                 </VBox.margin>
-                              </TextField>
-                              <TextField maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="360.0" promptText="簡単な発明">
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="タイトル" wrappingWidth="370.0">
                                  <font>
-                                    <Font size="10.0" />
+                                    <Font size="18.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets left="10.0" top="10.0" />
+                                 </VBox.margin>
+                              </Text>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="簡単な発明" wrappingWidth="360.0">
+                                 <font>
+                                    <Font size="14.0" />
                                  </font>
                                  <VBox.margin>
                                     <Insets left="15.0" top="5.0" />
                                  </VBox.margin>
-                              </TextField>
+                              </Text>
                               <HBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="30.0" prefWidth="370.0">
                                  <children>
                                     <Button maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" prefHeight="20.0" prefWidth="25.0" style="-fx-background-color: #FF6A60;" text="D" textFill="WHITE">
@@ -214,19 +218,22 @@
                         </VBox>
                         <VBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="100.0" prefWidth="390.0" style="-fx-background-color: #a0ff74; -fx-border-color: #000;" GridPane.columnIndex="1" GridPane.rowIndex="1">
                            <children>
-                              <TextField maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="30.0" prefWidth="370.0" promptText="タイトル">
-                                 <VBox.margin>
-                                    <Insets left="10.0" top="5.0" />
-                                 </VBox.margin>
-                              </TextField>
-                              <TextField maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="360.0" promptText="簡単な発明">
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="タイトル" wrappingWidth="370.0">
                                  <font>
-                                    <Font size="10.0" />
+                                    <Font size="18.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets left="10.0" top="10.0" />
+                                 </VBox.margin>
+                              </Text>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="簡単な発明" wrappingWidth="360.0">
+                                 <font>
+                                    <Font size="14.0" />
                                  </font>
                                  <VBox.margin>
                                     <Insets left="15.0" top="5.0" />
                                  </VBox.margin>
-                              </TextField>
+                              </Text>
                               <HBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="30.0" prefWidth="370.0">
                                  <children>
                                     <Button maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" prefHeight="20.0" prefWidth="25.0" style="-fx-background-color: #FF6A60;" text="D" textFill="WHITE">
@@ -261,19 +268,22 @@
                         </VBox>
                         <VBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="100.0" prefWidth="390.0" style="-fx-background-color: #a0ff74; -fx-border-color: #000;" GridPane.rowIndex="2">
                            <children>
-                              <TextField maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="30.0" prefWidth="370.0" promptText="タイトル">
-                                 <VBox.margin>
-                                    <Insets left="10.0" top="5.0" />
-                                 </VBox.margin>
-                              </TextField>
-                              <TextField maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="360.0" promptText="簡単な発明">
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="タイトル" wrappingWidth="370.0">
                                  <font>
-                                    <Font size="10.0" />
+                                    <Font size="18.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets left="10.0" top="10.0" />
+                                 </VBox.margin>
+                              </Text>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="簡単な発明" wrappingWidth="360.0">
+                                 <font>
+                                    <Font size="14.0" />
                                  </font>
                                  <VBox.margin>
                                     <Insets left="15.0" top="5.0" />
                                  </VBox.margin>
-                              </TextField>
+                              </Text>
                               <HBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="30.0" prefWidth="370.0">
                                  <children>
                                     <Button maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" prefHeight="20.0" prefWidth="25.0" style="-fx-background-color: #FF6A60;" text="D" textFill="WHITE">
@@ -308,19 +318,22 @@
                         </VBox>
                         <VBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="100.0" prefWidth="390.0" style="-fx-background-color: #a0ff74; -fx-border-color: #000;" GridPane.columnIndex="1" GridPane.rowIndex="2">
                            <children>
-                              <TextField maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="30.0" prefWidth="370.0" promptText="タイトル">
-                                 <VBox.margin>
-                                    <Insets left="10.0" top="5.0" />
-                                 </VBox.margin>
-                              </TextField>
-                              <TextField maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="360.0" promptText="簡単な発明">
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="タイトル" wrappingWidth="370.0">
                                  <font>
-                                    <Font size="10.0" />
+                                    <Font size="18.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets left="10.0" top="10.0" />
+                                 </VBox.margin>
+                              </Text>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="簡単な発明" wrappingWidth="360.0">
+                                 <font>
+                                    <Font size="14.0" />
                                  </font>
                                  <VBox.margin>
                                     <Insets left="15.0" top="5.0" />
                                  </VBox.margin>
-                              </TextField>
+                              </Text>
                               <HBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="30.0" prefWidth="370.0">
                                  <children>
                                     <Button maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" prefHeight="20.0" prefWidth="25.0" style="-fx-background-color: #FF6A60;" text="D" textFill="WHITE">
@@ -402,7 +415,7 @@
          <children>
             <VBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="200.0" prefWidth="220.0">
                <children>
-                  <Text onMouseClicked="#adHomepageClick" strokeType="OUTSIDE" strokeWidth="0.0" text="ホームページ" textAlignment="CENTER" wrappingWidth="220.0">
+                  <Text onMouseClicked="#userHomepageClicked" strokeType="OUTSIDE" strokeWidth="0.0" text="ホームページ" textAlignment="CENTER" wrappingWidth="220.0">
                      <font>
                         <Font size="25.0" />
                      </font>
@@ -410,7 +423,7 @@
                         <Insets top="30.0" />
                      </VBox.margin>
                   </Text>
-                  <Text onMouseClicked="#TemplateManageClick" strokeType="OUTSIDE" strokeWidth="0.0" text="テンプレート" textAlignment="CENTER" wrappingWidth="220.0">
+                  <Text onMouseClicked="#userTemplateClicked" strokeType="OUTSIDE" strokeWidth="0.0" text="テンプレート" textAlignment="CENTER" wrappingWidth="220.0">
                      <font>
                         <Font size="25.0" />
                      </font>
@@ -418,7 +431,7 @@
                         <Insets top="15.0" />
                      </VBox.margin>
                   </Text>
-                  <Text onMouseClicked="#TemplateManageClick" strokeType="OUTSIDE" strokeWidth="0.0" text="テンプレート保存" textAlignment="CENTER" underline="true" wrappingWidth="220.0">
+                  <Text onMouseClicked="#templateSaveClicked" strokeType="OUTSIDE" strokeWidth="0.0" text="テンプレート保存" textAlignment="CENTER" underline="true" wrappingWidth="220.0">
                      <font>
                         <Font size="25.0" />
                      </font>
@@ -426,7 +439,7 @@
                         <Insets top="15.0" />
                      </VBox.margin>
                   </Text>
-                  <Text onMouseClicked="#TemplateManageClick" strokeType="OUTSIDE" strokeWidth="0.0" text="プロファイル" textAlignment="CENTER" wrappingWidth="220.0">
+                  <Text onMouseClicked="#userProfileClicked" strokeType="OUTSIDE" strokeWidth="0.0" text="プロファイル" textAlignment="CENTER" wrappingWidth="220.0">
                      <font>
                         <Font size="25.0" />
                      </font>
@@ -434,7 +447,7 @@
                         <Insets top="60.0" />
                      </VBox.margin>
                   </Text>
-                  <Text onMouseClicked="#TemplateManageClick" strokeType="OUTSIDE" strokeWidth="0.0" text="設定" textAlignment="CENTER" wrappingWidth="220.0">
+                  <Text onMouseClicked="#settingClicked" strokeType="OUTSIDE" strokeWidth="0.0" text="設定" textAlignment="CENTER" wrappingWidth="220.0">
                      <font>
                         <Font size="25.0" />
                      </font>
@@ -442,7 +455,7 @@
                         <Insets top="15.0" />
                      </VBox.margin>
                   </Text>
-                  <Text onMouseClicked="#TemplateManageClick" strokeType="OUTSIDE" strokeWidth="0.0" text="ログアウト" textAlignment="CENTER" wrappingWidth="220.0">
+                  <Text onMouseClicked="#logOut" strokeType="OUTSIDE" strokeWidth="0.0" text="ログアウト" textAlignment="CENTER" wrappingWidth="220.0">
                      <font>
                         <Font size="25.0" />
                      </font>

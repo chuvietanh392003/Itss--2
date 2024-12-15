@@ -9,6 +9,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.event.Event;
 import javafx.scene.Node;
 import javafx.stage.Stage;
+import main.java.model.Template;
 
 import java.io.IOException;
 
@@ -54,7 +55,7 @@ public class BaseController {
     
     @FXML
     protected void switchToTemplateManage(Event event) throws IOException {
-        switchScene(event, "/main/resources/fxml/TemplateManage.fxml");
+        switchScene(event, "/main/resources/fxml/ManageTemplate.fxml");
     }
     
     @FXML
@@ -64,7 +65,37 @@ public class BaseController {
     
     @FXML
     protected void switchToUserManage(Event event) throws IOException {
-        switchScene(event, "/main/resources/fxml/UserManage.fxml");
+        switchScene(event, "/main/resources/fxml/ManageUser.fxml");
+    }
+    
+    @FXML
+    protected void switchToUserProfile(Event event) throws IOException {
+        switchScene(event, "/main/resources/fxml/UserProfile.fxml");
+    }
+    
+    @FXML
+    protected void switchToUserSetting(Event event) throws IOException {
+        switchScene(event, "/main/resources/fxml/UserSetting.fxml");
+    }
+    
+    @FXML
+    protected void switchToUserTemplate(Event event) throws IOException {
+        switchScene(event, "/main/resources/fxml/UserTemplate.fxml");
+    }
+    
+    @FXML
+    protected void switchToUserTemplateSave(Event event) throws IOException{
+    	switchScene(event, "/main/resources/fxml/SavedTemplate.fxml");
+    }
+    
+    @FXML
+    protected void switchToTemplateView(Event event) throws IOException {
+       switchScene(event, "/main/resources/fxml/AdminTemplateView.fxml");
+    }
+    
+    @FXML
+    protected void switchToUserTemplateView(Event event) throws IOException {
+       switchScene(event, "/main/resources/fxml/UserTemplateView.fxml");
     }
     
     // Phương thức này sẽ giữ nguyên kích thước cửa sổ ban đầu 

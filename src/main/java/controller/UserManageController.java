@@ -2,8 +2,6 @@ package main.java.controller;
 
 import java.io.IOException;
 
-import javax.swing.SwingUtilities;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -16,7 +14,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import main.java.model.User;
-import main.java.repository.UserRepository;
+import main.java.service.UserService;
+import main.java.service.implement.UserServiceImp;
 import main.java.view.AddUserView;
 
 public class UserManageController extends BaseController {
@@ -39,9 +38,9 @@ public class UserManageController extends BaseController {
     @FXML
     private HBox paginationButtons; // HBox chứa các nút phân trang
     
-    private UserRepository userRepository = new UserRepository();
+    private UserService userService = new UserServiceImp(); 
     private ObservableList<User> userList = FXCollections.observableArrayList();
-    private FilteredList<User> filteredList; // Danh sách được lọc
+    private FilteredList<User> filteredList; 
     
     private ObservableList<User> currentPageList = FXCollections.observableArrayList(); // Danh sách hiển thị ở trang hiện tại
 
@@ -50,17 +49,17 @@ public class UserManageController extends BaseController {
     
     @FXML
     void TemplateManageClick(MouseEvent event) throws IOException {
-    	switchToTemplateManage(event);
+        switchToTemplateManage(event);
     }
 
     @FXML
     void adHomepageClick(MouseEvent event) throws IOException {
-    	switchToAdminHomePage(event);
+        switchToAdminHomePage(event);
     }
 
     @FXML
     void userManageClick(MouseEvent event) throws IOException {
-    	switchToUserManage(event);
+        switchToUserManage(event);
     }
     
     @FXML
@@ -70,7 +69,7 @@ public class UserManageController extends BaseController {
         gmailColumn.setCellValueFactory(new PropertyValueFactory<>("gmail"));
         createdAtColumn.setCellValueFactory(new PropertyValueFactory<>("createAt"));
 
-        // Tải dữ liệu từ repository
+        // Tải dữ liệu từ service
         loadUsers();
 
         // Thiết lập chức năng tìm kiếm
@@ -82,9 +81,8 @@ public class UserManageController extends BaseController {
 
     private void loadUsers() {
         userList.clear();
-        userList.addAll(userRepository.getAllUsers());
+        userList.addAll(userService.getAllUsers()); 
 
-        // Khởi tạo FilteredList từ userList
         filteredList = new FilteredList<>(userList, b -> true);
 
         // Hiển thị dữ liệu trang đầu tiên
@@ -126,7 +124,6 @@ public class UserManageController extends BaseController {
             currentPage = 1;
         }
 
-        // Cập nhật danh sách hiển thị cho trang hiện tại
         int fromIndex = (currentPage - 1) * rowsPerPage;
         int toIndex = Math.min(fromIndex + rowsPerPage, totalRows);
 
@@ -177,36 +174,31 @@ public class UserManageController extends BaseController {
     
     @FXML
     void addUserEnter(ActionEvent event) {
-        SwingUtilities.invokeLater(() -> {
-            AddUserView addUserView = new AddUserView();
-            new AddUserController(addUserView, userRepository);
+        AddUserView addUserView = new AddUserView();
+        new AddUserController(addUserView, userService);
 
-            // Thêm listener để kiểm tra khi cửa sổ đóng
-            addUserView.addWindowListener(new java.awt.event.WindowAdapter() {
-                @Override
-                public void windowClosed(java.awt.event.WindowEvent e) {
-                    // Tải lại danh sách người dùng sau khi đóng cửa sổ
-                    userList.clear();
-                    userList.addAll(userRepository.getAllUsers());
-                    setupPagination(); // Cập nhật lại bảng
-                }
-            });
-
-            addUserView.setVisible(true);
+        addUserView.addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosed(java.awt.event.WindowEvent e) {
+                userList.clear();
+                userList.addAll(userService.getAllUsers()); // Sử dụng UserService
+                setupPagination(); 
+            }
         });
+
+        addUserView.setVisible(true);
     }
     
     @FXML
     void deleteUserEnter(ActionEvent event) {
         deleteUser();
         setupPagination();
-        
     }
 
     private void deleteUser() {
         User selectedUser = userTable.getSelectionModel().getSelectedItem();
         if (selectedUser != null) {
-            userRepository.deleteUser(selectedUser.getUsername());
+            userService.deleteUser(selectedUser.getUsername()); // Sử dụng UserService
             userList.remove(selectedUser);         
         }
     } 

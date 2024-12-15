@@ -12,8 +12,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane prefHeight="630.0" prefWidth="1120.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="630.0" prefWidth="1120.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.controller.UserProfileController">
    <children>
       <AnchorPane layoutX="20.0" layoutY="14.0" prefHeight="110.0" prefWidth="1080.0" style="-fx-border-color: #000;">
          <children>
@@ -28,7 +27,7 @@
          <children>
             <VBox prefHeight="197.0" prefWidth="205.0">
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ホームページ" textAlignment="CENTER" wrappingWidth="214.13671875">
+                  <Text onMouseClicked="#userHomepageClicked" strokeType="OUTSIDE" strokeWidth="0.0" text="ホームページ" textAlignment="CENTER" wrappingWidth="214.13671875">
                      <font>
                         <Font size="25.0" />
                      </font>
@@ -36,7 +35,7 @@
                         <Insets top="15.0" />
                      </VBox.margin>
                   </Text>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="テンプレート" textAlignment="CENTER" wrappingWidth="214.13671875">
+                  <Text onMouseClicked="#userTemplateClicked" strokeType="OUTSIDE" strokeWidth="0.0" text="テンプレート" textAlignment="CENTER" wrappingWidth="214.13671875">
                      <font>
                         <Font size="25.0" />
                      </font>
@@ -44,7 +43,7 @@
                         <Insets top="15.0" />
                      </VBox.margin>
                   </Text>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="テンプレート保存" textAlignment="CENTER" wrappingWidth="214.13671875">
+                  <Text onMouseClicked="#templateSaveClicked" strokeType="OUTSIDE" strokeWidth="0.0" text="テンプレート保存" textAlignment="CENTER" wrappingWidth="214.13671875">
                      <font>
                         <Font size="25.0" />
                      </font>
@@ -56,12 +55,12 @@
             </VBox>
             <VBox layoutX="2.0" layoutY="239.0" prefHeight="212.0" prefWidth="195.0">
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="プロファイル" textAlignment="CENTER" underline="true" wrappingWidth="214.13671875">
+                  <Text onMouseClicked="#userProfileClicked" strokeType="OUTSIDE" strokeWidth="0.0" text="プロファイル" textAlignment="CENTER" underline="true" wrappingWidth="214.13671875">
                      <font>
                         <Font size="25.0" />
                      </font>
                   </Text>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="設定" textAlignment="CENTER" wrappingWidth="214.13671875">
+                  <Text onMouseClicked="#settingClicked" strokeType="OUTSIDE" strokeWidth="0.0" text="設定" textAlignment="CENTER" wrappingWidth="214.13671875">
                      <font>
                         <Font size="25.0" />
                      </font>
@@ -69,7 +68,7 @@
                         <Insets top="15.0" />
                      </VBox.margin>
                   </Text>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ログアウト" textAlignment="CENTER" wrappingWidth="214.13671875">
+                  <Text onMouseClicked="#logOut" strokeType="OUTSIDE" strokeWidth="0.0" text="ログアウト" textAlignment="CENTER" wrappingWidth="214.13671875">
                      <font>
                         <Font size="25.0" />
                      </font>
@@ -105,7 +104,7 @@
                                     <Insets left="70.0" />
                                  </VBox.margin>
                               </Text>
-                              <TextArea prefHeight="40.0" prefWidth="310.0" promptText="ユーザー名">
+                              <TextArea fx:id="usernameField" prefHeight="40.0" prefWidth="310.0" promptText="ユーザー名">
                                  <font>
                                     <Font size="13.0" />
                                  </font>
@@ -125,7 +124,7 @@
                                     <Insets left="70.0" />
                                  </VBox.margin>
                               </Text>
-                              <TextArea prefHeight="24.0" prefWidth="330.0" promptText="メール">
+                              <TextArea fx:id="mailField" prefHeight="24.0" prefWidth="330.0" promptText="メール">
                                  <font>
                                     <Font size="14.0" />
                                  </font>
@@ -140,7 +139,7 @@
                         </VBox>
                         <HBox prefHeight="40.0" prefWidth="300.0">
                            <children>
-                              <Button mnemonicParsing="false" style="-fx-background-color: #FF6A60;" text="キャンセル" textFill="WHITE">
+                              <Button mnemonicParsing="false" onAction="#changeMailCancel" style="-fx-background-color: #FF6A60;" text="キャンセル" textFill="WHITE">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
@@ -148,7 +147,7 @@
                                     <Insets right="15.0" />
                                  </HBox.margin>
                               </Button>
-                              <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="84.0" style="-fx-background-color: #046CE2;" text="保存" textFill="WHITE">
+                              <Button mnemonicParsing="false" onAction="#changeMailEnter" prefHeight="35.0" prefWidth="84.0" style="-fx-background-color: #046CE2;" text="保存" textFill="WHITE">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
@@ -186,7 +185,7 @@
                                     <Insets left="70.0" />
                                  </VBox.margin>
                               </Text>
-                              <TextArea prefHeight="40.0" prefWidth="310.0" promptText="新しいパスワード">
+                              <TextArea fx:id="pwField" prefHeight="40.0" prefWidth="310.0" promptText="新しいパスワード">
                                  <font>
                                     <Font size="13.0" />
                                  </font>
@@ -206,7 +205,7 @@
                                     <Insets left="70.0" />
                                  </VBox.margin>
                               </Text>
-                              <TextArea prefHeight="24.0" prefWidth="330.0" promptText="パスワードの確認">
+                              <TextArea fx:id="pw2Field" prefHeight="24.0" prefWidth="330.0" promptText="パスワードの確認">
                                  <font>
                                     <Font size="14.0" />
                                  </font>
@@ -221,7 +220,7 @@
                         </VBox>
                         <HBox prefHeight="40.0" prefWidth="300.0">
                            <children>
-                              <Button mnemonicParsing="false" style="-fx-background-color: #FF6A60;" text="キャンセル" textFill="WHITE">
+                              <Button mnemonicParsing="false" onAction="#changePasswordCancel" style="-fx-background-color: #FF6A60;" text="キャンセル" textFill="WHITE">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
@@ -229,7 +228,7 @@
                                     <Insets right="15.0" />
                                  </HBox.margin>
                               </Button>
-                              <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="84.0" style="-fx-background-color: #046CE2;" text="保存" textFill="WHITE">
+                              <Button mnemonicParsing="false" onAction="#changePasswordEnter" prefHeight="35.0" prefWidth="84.0" style="-fx-background-color: #046CE2;" text="保存" textFill="WHITE">
                                  <font>
                                     <Font size="16.0" />
                                  </font>

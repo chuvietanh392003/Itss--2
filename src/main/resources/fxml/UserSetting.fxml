@@ -12,7 +12,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="630.0" prefWidth="1120.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="630.0" prefWidth="1120.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.controller.UserSettingController">
    <children>
       <AnchorPane layoutX="20.0" layoutY="14.0" prefHeight="110.0" prefWidth="1080.0" style="-fx-border-color: #000;">
          <children>
@@ -27,7 +27,7 @@
          <children>
             <VBox prefHeight="197.0" prefWidth="205.0">
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ホームページ" textAlignment="CENTER" wrappingWidth="214.13671875">
+                  <Text onMouseClicked="#userHomepageClicked" strokeType="OUTSIDE" strokeWidth="0.0" text="ホームページ" textAlignment="CENTER" wrappingWidth="214.13671875">
                      <font>
                         <Font size="25.0" />
                      </font>
@@ -35,7 +35,7 @@
                         <Insets top="15.0" />
                      </VBox.margin>
                   </Text>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="テンプレート" textAlignment="CENTER" wrappingWidth="214.13671875">
+                  <Text onMouseClicked="#userTemplateClicked" strokeType="OUTSIDE" strokeWidth="0.0" text="テンプレート" textAlignment="CENTER" wrappingWidth="214.13671875">
                      <font>
                         <Font size="25.0" />
                      </font>
@@ -43,7 +43,7 @@
                         <Insets top="15.0" />
                      </VBox.margin>
                   </Text>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="テンプレート保存" textAlignment="CENTER" wrappingWidth="214.13671875">
+                  <Text onMouseClicked="#templateSaveClicked" strokeType="OUTSIDE" strokeWidth="0.0" text="テンプレート保存" textAlignment="CENTER" wrappingWidth="214.13671875">
                      <font>
                         <Font size="25.0" />
                      </font>
@@ -55,12 +55,12 @@
             </VBox>
             <VBox layoutX="2.0" layoutY="239.0" prefHeight="212.0" prefWidth="195.0">
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="プロファイル" textAlignment="CENTER" wrappingWidth="214.13671875">
+                  <Text onMouseClicked="#userProfileClicked" strokeType="OUTSIDE" strokeWidth="0.0" text="プロファイル" textAlignment="CENTER" wrappingWidth="214.13671875">
                      <font>
                         <Font size="25.0" />
                      </font>
                   </Text>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="設定" textAlignment="CENTER" underline="true" wrappingWidth="214.13671875">
+                  <Text onMouseClicked="#settingClicked" strokeType="OUTSIDE" strokeWidth="0.0" text="設定" textAlignment="CENTER" underline="true" wrappingWidth="214.13671875">
                      <font>
                         <Font size="25.0" />
                      </font>
@@ -68,7 +68,7 @@
                         <Insets top="15.0" />
                      </VBox.margin>
                   </Text>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ログアウト" textAlignment="CENTER" wrappingWidth="214.13671875">
+                  <Text onMouseClicked="#logOut" strokeType="OUTSIDE" strokeWidth="0.0" text="ログアウト" textAlignment="CENTER" wrappingWidth="214.13671875">
                      <font>
                         <Font size="25.0" />
                      </font>

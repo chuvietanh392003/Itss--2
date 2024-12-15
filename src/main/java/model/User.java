@@ -8,7 +8,6 @@ public class User {
     private String createAt;
     private String gmail;
 
-    // Constructor
     public User() {
     	
     }

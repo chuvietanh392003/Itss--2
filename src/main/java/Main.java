@@ -11,11 +11,11 @@ public class Main extends Application {
     public void start(Stage primaryStage) {
         try {
             // Load file FXML, nó sẽ trả về một AnchorPane nếu trong FXML sử dụng AnchorPane
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/resources/fxml/LoginPage.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/resources/fxml/LandingPage.fxml"));
             AnchorPane root = loader.load(); // Load layout từ FXML (AnchorPane)
             
             // Tạo Scene với root là AnchorPane từ FXML
-            Scene scene = new Scene(root, 1920, 1080);
+            Scene scene = new Scene(root, 1120, 630);
             primaryStage.setScene(scene);
             primaryStage.show();
         } catch (Exception e) {
@@ -27,3 +27,5 @@ public class Main extends Application {
         launch(args);
     }
 }
+
+

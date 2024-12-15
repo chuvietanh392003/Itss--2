@@ -1,19 +1,17 @@
 package main.java.controller;
 
-import main.java.model.User;
-import main.java.repository.UserRepository;
+import main.java.service.UserService;
 import main.java.view.AddUserView;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class AddUserController {
     private AddUserView view;
-    private UserRepository userRepository;
+    private UserService userService;
 
-    public AddUserController(AddUserView view, UserRepository userRepository) {
+    public AddUserController(AddUserView view, UserService userService) {
         this.view = view;
-        this.userRepository = userRepository;
+        this.userService = userService;
 
         // Gắn sự kiện cho các nút
         this.view.addAddUserListener(new AddUserListener());
@@ -30,8 +28,7 @@ public class AddUserController {
             if (username.isEmpty() || email.isEmpty() || password.isEmpty()) {
                 view.showErrorMessage("All fields are required!");
             } else {
-                User newUser = new User(username, email, password, false);
-                userRepository.addUser(username, email, password, false);
+                userService.addUser(username,email, password, false );
                 view.close();
             }
         }
