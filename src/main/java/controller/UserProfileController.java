@@ -3,9 +3,12 @@ package main.java.controller;
 import java.io.IOException;
 
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import main.java.model.User;
 import main.java.service.UserService;
@@ -18,10 +21,10 @@ public class UserProfileController extends BaseController {
     private TextArea mailField;
 
     @FXML
-    private TextArea pw2Field;
+    private PasswordField pw2Field;
 
     @FXML
-    private TextArea pwField;
+    private PasswordField pwField;
 
     @FXML
     private TextArea usernameField;
@@ -108,5 +111,58 @@ public class UserProfileController extends BaseController {
             showAlert(AlertType.INFORMATION, "成功", "パスワードが正常に変更されました");
         }
     }
+    
+    @FXML
+    void showPassword(Event event) {
+        TextField visiblePwField = new TextField();
+        visiblePwField.setText(pwField.getText()); // Lấy mật khẩu hiện tại
+
+        // Lấy vị trí và kích thước từ pwField
+        visiblePwField.setManaged(false);
+        visiblePwField.setLayoutX(pwField.getBoundsInParent().getMinX()); // Lấy vị trí chính xác trong container cha
+        visiblePwField.setLayoutY(pwField.getBoundsInParent().getMinY());
+        visiblePwField.setPrefWidth(pwField.getWidth());
+        visiblePwField.setPrefHeight(pwField.getHeight());
+
+        // Khi người dùng di chuột ra khỏi trường
+        visiblePwField.setOnMouseExited(e -> {
+            pwField.setText(visiblePwField.getText());
+            ((javafx.scene.layout.Pane) pwField.getParent()).getChildren().remove(visiblePwField); // Xóa TextField
+            pwField.setVisible(true); // Hiển thị lại PasswordField
+        });
+
+        // Thêm TextField vào giao diện
+        ((javafx.scene.layout.Pane) pwField.getParent()).getChildren().add(visiblePwField);
+
+        pwField.setVisible(false); // Ẩn PasswordField
+        visiblePwField.requestFocus(); // Focus vào TextField mới
+    }
+
+    @FXML
+    void showPasswordCf(Event event) {
+        TextField visiblePw2Field = new TextField();
+        visiblePw2Field.setText(pw2Field.getText()); // Lấy mật khẩu xác nhận hiện tại
+
+        // Lấy vị trí và kích thước từ pw2Field
+        visiblePw2Field.setManaged(false);
+        visiblePw2Field.setLayoutX(pw2Field.getBoundsInParent().getMinX()); // Lấy vị trí chính xác trong container cha
+        visiblePw2Field.setLayoutY(pw2Field.getBoundsInParent().getMinY());
+        visiblePw2Field.setPrefWidth(pw2Field.getWidth());
+        visiblePw2Field.setPrefHeight(pw2Field.getHeight());
+
+        // Khi người dùng di chuột ra khỏi trường
+        visiblePw2Field.setOnMouseExited(e -> {
+            pw2Field.setText(visiblePw2Field.getText());
+            ((javafx.scene.layout.Pane) pw2Field.getParent()).getChildren().remove(visiblePw2Field); // Xóa TextField
+            pw2Field.setVisible(true); // Hiển thị lại PasswordField
+        });
+
+        // Thêm TextField vào giao diện
+        ((javafx.scene.layout.Pane) pw2Field.getParent()).getChildren().add(visiblePw2Field);
+
+        pw2Field.setVisible(false); // Ẩn PasswordField
+        visiblePw2Field.requestFocus(); // Focus vào TextField mới
+    }
+
 
 }

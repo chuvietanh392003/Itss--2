@@ -1,5 +1,6 @@
 package main.java.controller;
 
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.TextArea;
 import javafx.scene.Node;
 import javafx.event.Event;
@@ -61,7 +62,7 @@ public class AdminTemplateViewController extends BaseController {
                 if (file != null) {
                     // Nếu file được chọn, in ra file PDF
                     printerJob.endJob();
-                    System.out.println("PDF đã được lưu thành công!");
+                    showAlert(AlertType.INFORMATION,"成功", "テンプレートが正常に保存されました");
                 }
             }
         }

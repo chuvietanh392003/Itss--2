@@ -10,4 +10,5 @@ public interface TemplateDetailRepository {
     List<TemplateDetail> getTemplateDetails();
     String getTemplateTextByTemplate(Template template);
     String getTemplateSetsumeiByTemplate(Template template);
+    void createTemplateDetail(int id, String title, String description, String templateText, String setsumeiText);
 }

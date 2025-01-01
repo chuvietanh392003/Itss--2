@@ -18,6 +18,11 @@ public class TemplateServiceImpl implements TemplateService {
     public List<Template> getAllTemplates() {
         return templateRepository.getAllTemplates();
     }
+    
+    @Override
+    public List<Template> getAllTemplatesForUserId(int UserId){
+    	return templateRepository.getAllTemplatesForUserId(UserId);
+    }
 
     @Override
     public Template getTemplateById(int id) {

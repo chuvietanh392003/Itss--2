@@ -98,6 +98,16 @@ public class BaseController {
        switchScene(event, "/main/resources/fxml/UserTemplateView.fxml");
     }
     
+    @FXML
+    protected void switchToUserAddTemplate(Event event) throws IOException {
+       switchScene(event, "/main/resources/fxml/UserAddTemplate.fxml");
+    }
+    
+    @FXML
+    protected void switchUserTemplateViewSaveToView(Event event) throws IOException {
+       switchScene(event, "/main/resources/fxml/UserTemplateViewSaveToView.fxml");
+    }
+    
     // Phương thức này sẽ giữ nguyên kích thước cửa sổ ban đầu 
     private void switchScene(Event event, String fxmlPath) throws IOException {
         Node source = (Node) event.getSource();  

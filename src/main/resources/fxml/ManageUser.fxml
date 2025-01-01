@@ -1,27 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.text.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.shape.Line?>
-<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="630.0" prefWidth="1120.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.controller.UserManageController">
+<AnchorPane prefHeight="630.0" prefWidth="1120.0" style="background-color: #f9fafb;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.controller.UserManageController">
    <children>
-      <AnchorPane layoutX="20.0" layoutY="20.0" prefHeight="110.0" prefWidth="1080.0" style="-fx-border-color: #000;">
+      <AnchorPane layoutX="20.0" layoutY="20.0" prefHeight="117.0" prefWidth="1080.0" style="-fx-border-color: #ddd; -fx-background-color: #ffffff; -fx-border-radius: 8; -fx-background-radius: 8;">
          <children>
             <ImageView fitHeight="73.0" fitWidth="259.0" layoutX="22.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -30,30 +23,23 @@
             </ImageView>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="20.0" layoutY="135.0" prefHeight="480.0" prefWidth="220.0" style="-fx-border-color: #000;">
+
+      <!-- Sidebar -->
+      <AnchorPane layoutX="20.0" layoutY="135.0" prefHeight="480.0" prefWidth="220.0" style="-fx-border-color: #ddd; -fx-background-color: #ffffff; -fx-border-radius: 8; -fx-background-radius: 8;">
          <children>
             <VBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="200.0" prefWidth="220.0">
                <children>
-                  <Text onMouseClicked="#adHomepageClick" strokeType="OUTSIDE" strokeWidth="0.0" text="ホームページ" textAlignment="CENTER" wrappingWidth="220.0">
-                     <font>
-                        <Font size="25.0" />
-                     </font>
+                  <Text onMouseClicked="#adHomepageClick" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 22px; -fx-font-family: 'Meiryo'; -fx-text-fill: #333;" text="ホームページ" textAlignment="CENTER" wrappingWidth="220.0">
                      <VBox.margin>
                         <Insets top="15.0" />
                      </VBox.margin>
                   </Text>
-                  <Text onMouseClicked="#userManageClick" strokeType="OUTSIDE" strokeWidth="0.0" text="ユーザー" textAlignment="CENTER" underline="true" wrappingWidth="220.0">
-                     <font>
-                        <Font size="25.0" />
-                     </font>
+                  <Text onMouseClicked="#userManageClick" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 22px; -fx-font-family: 'Meiryo'; -fx-text-fill: #3e17ff; -fx-underline: true;" text="ユーザー管理" textAlignment="CENTER" wrappingWidth="220.0">
                      <VBox.margin>
                         <Insets top="15.0" />
                      </VBox.margin>
                   </Text>
-                  <Text onMouseClicked="#TemplateManageClick" strokeType="OUTSIDE" strokeWidth="0.0" text="テンプレート" textAlignment="CENTER" wrappingWidth="220.0">
-                     <font>
-                        <Font size="25.0" />
-                     </font>
+                  <Text onMouseClicked="#TemplateManageClick" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 22px; -fx-font-family: 'Meiryo'; -fx-text-fill: #333;" text="テンプレート管理" textAlignment="CENTER" wrappingWidth="220.0">
                      <VBox.margin>
                         <Insets top="15.0" />
                      </VBox.margin>
@@ -62,97 +48,78 @@
             </VBox>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="248.0" layoutY="135.0" prefHeight="480.0" prefWidth="850.0" style="-fx-border-color: #000;">
+
+      <!-- Main Content -->
+      <AnchorPane layoutX="248.0" layoutY="135.0" prefHeight="480.0" prefWidth="850.0" style="-fx-border-color: #ddd; -fx-background-color: #ffffff; -fx-border-radius: 8; -fx-background-radius: 8;">
          <children>
-            <HBox prefHeight="60.0" prefWidth="850.0">
+            <HBox prefHeight="81.0" prefWidth="850.0" style="-fx-background-color: #f1f5f9; -fx-border-radius: 8; -fx-padding: 10px;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ユーザー" textAlignment="CENTER" wrappingWidth="160.0">
-                     <font>
-                        <Font size="30.0" />
-                     </font>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 28px; -fx-font-family: 'Meiryo'; -fx-text-fill: #333;" text="ユーザー管理" textAlignment="CENTER" wrappingWidth="216.0" />
+                  <Button maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#addUserEnter" prefHeight="50.0" prefWidth="160.0" style="-fx-background-color: linear-gradient(to bottom, #4caf50, #388e3c); -fx-border-radius: 8; -fx-background-radius: 8; -fx-border-color: #2e7d32; -fx-text-fill: white; -fx-font-size: 20px;" text="＋ ユーザー">
                      <HBox.margin>
-                        <Insets top="5.0" />
-                     </HBox.margin>
-                  </Text>
-                  <Button maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#addUserEnter" prefHeight="50.0" prefWidth="160.0" style="-fx-background-color: #3cf124; -fx-border-color: #000;" text="＋ ユーザー" textFill="WHITE">
-                     <font>
-                        <Font size="22.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets left="500.0" top="5.0" />
+                        <Insets left="450.0" />
                      </HBox.margin>
                   </Button>
                </children>
             </HBox>
-            <VBox layoutX="26.0" layoutY="60.0" prefHeight="415.0" prefWidth="800.0" style="-fx-border-color: #000;">
+            <HBox layoutY="80.0" prefHeight="409.0" prefWidth="841.0" AnchorPane.bottomAnchor="2.6666666666666856" AnchorPane.topAnchor="81.0">
                <children>
-                  <HBox prefHeight="50.0" prefWidth="798.0">
+      
+                  <VBox prefHeight="292.0" prefWidth="841.0">
                      <children>
-                        <Button mnemonicParsing="false" onAction="#deleteUserEnter" prefHeight="30.0" prefWidth="50.0" style="-fx-background-color: #ff0000;" text="DEL" textFill="#f5f5f5">
-                           <HBox.margin>
-                              <Insets left="17.0" top="12.0" />
-                           </HBox.margin>
-                        </Button>
-                        <TextField fx:id="searchField" prefHeight="30.0" prefWidth="250.0">
-                           <HBox.margin>
-                              <Insets left="410.0" top="12.0" />
-                           </HBox.margin>
-                        </TextField>
-                        <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="50.0" style="-fx-background-color: #3e17ff;" text="SRCH" textFill="WHITE">
-                           <HBox.margin>
-                              <Insets left="10.0" top="12.0" />
-                           </HBox.margin>
-                        </Button>
+                        <HBox prefHeight="57.0" prefWidth="841.0" style="-fx-background-color: #f8f9fa; -fx-padding: 5px;">
+                           <children>
+                              <Button mnemonicParsing="false" onAction="#deleteUserEnter" prefHeight="36.0" prefWidth="83.0" style="-fx-background-color: #ff5252; -fx-border-radius: 5; -fx-background-radius: 5; -fx-text-fill: white; -fx-font-size: 16;" text="削除">
+                                 <HBox.margin>
+                                    <Insets left="10.0" />
+                                 </HBox.margin>
+                              </Button>
+                              <TextField fx:id="searchField" prefHeight="30.0" prefWidth="250.0" style="-fx-border-color: #ccc; -fx-border-radius: 5; -fx-padding: 5px;">
+                                 <HBox.margin>
+                                    <Insets left="400.0" />
+                                 </HBox.margin>
+                                 <opaqueInsets>
+                                    <Insets right="10.0" />
+                                 </opaqueInsets>
+                              </TextField>
+                              <Button mnemonicParsing="false" prefHeight="36.0" prefWidth="81.0" style="-fx-background-color: #3e17ff; -fx-border-radius: 5; -fx-background-radius: 5; -fx-text-fill: white; -fx-font-size: 16;" text="検索">
+                                 <HBox.margin>
+                                    <Insets left="20.0" />
+                                 </HBox.margin>
+                              </Button>
+                           </children>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </HBox>
+                        
+                        <TableView fx:id="userTable" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="319.0" prefWidth="844.0" style="-fx-border-color: #ddd; -fx-background-color: #ffffff;">
+                          <columns>
+                            <TableColumn fx:id="usernameColumn" maxWidth="200.0" prefWidth="200.0" style="-fx-font-size: 16;" text="名前" />
+                            <TableColumn fx:id="gmailColumn" maxWidth="399.0" prefWidth="399.0" style="-fx-font-size: 16;" text="メール" />
+                            <TableColumn fx:id="createdAtColumn" maxWidth="199.0" prefWidth="199.0" style="-fx-font-size: 16;" text="作成日" />
+                          </columns>
+                        </TableView>
+      
+                        <HBox fx:id="paginationButtons" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="35.0" prefWidth="798.0" style="-fx-background-color: #f9fafb;">
+                           <children>
+                              <Button mnemonicParsing="false" onAction="#goToFirstPage" prefHeight="20.0" prefWidth="40.0" style="-fx-background-color: #e0e0e0; -fx-border-color: #ddd;" text="&lt;&lt;">
+                                 <HBox.margin>
+                                    <Insets left="300.0" />
+                                 </HBox.margin>
+                              </Button>
+                              <Button mnemonicParsing="false" onAction="#goToPreviousPage" prefHeight="20.0" prefWidth="40.0" style="-fx-background-color: #e0e0e0; -fx-border-color: #ddd;" text="&lt;" />
+                              <Button mnemonicParsing="false" onAction="#goToFirstPage" prefHeight="20.0" prefWidth="35.0" style="-fx-background-color: #ffffff; -fx-border-color: #ddd;" text="1" />
+                              <Button mnemonicParsing="false" onAction="#goToSecondPage" prefHeight="20.0" prefWidth="35.0" style="-fx-background-color: #ffffff; -fx-border-color: #ddd;" text="2" />
+                              <Button mnemonicParsing="false" onAction="#goToThirdPage" prefHeight="20.0" prefWidth="35.0" style="-fx-background-color: #ffffff; -fx-border-color: #ddd;" text="3" />
+                              <Button mnemonicParsing="false" onAction="#goToNextPage" prefHeight="20.0" prefWidth="40.0" style="-fx-background-color: #e0e0e0; -fx-border-color: #ddd;" text="&gt;" />
+                              <Button mnemonicParsing="false" onAction="#goToLastPage" prefHeight="20.0" prefWidth="40.0" style="-fx-background-color: #e0e0e0; -fx-border-color: #ddd;" text="&gt;&gt;" />
+                           </children>
+                        </HBox>
                      </children>
-                  </HBox>
-                  <TableView fx:id="userTable" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="330.0" prefWidth="798.0">
-                    <columns>
-                      <TableColumn fx:id="usernameColumn" maxWidth="200.0" minWidth="200.0" prefWidth="200.0" text="名前" />
-                      <TableColumn fx:id="gmailColumn" maxWidth="399.0" minWidth="399.0" prefWidth="399.0" text="メール" />
-                        <TableColumn fx:id="createdAtColumn" maxWidth="199.0" minWidth="199.0" prefWidth="199.0" text="作成日" />
-                    </columns>
-                  </TableView>
-                  <HBox fx:id="paginationButtons" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="35.0" prefWidth="798.0">
-                     <children>
-                        <Button maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#goToFirstPage" prefHeight="20.0" prefWidth="40.0" style="-fx-background-color: #fff; -fx-border-color: #000;" text="&lt;&lt;">
-                           <HBox.margin>
-                              <Insets left="270.0" top="5.0" />
-                           </HBox.margin>
-                        </Button>
-                        <Button maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#goToPreviousPage" prefHeight="20.0" prefWidth="40.0" style="-fx-background-color: #fff; -fx-border-color: #000;" text="&lt;">
-                           <HBox.margin>
-                              <Insets left="5.0" top="5.0" />
-                           </HBox.margin>
-                        </Button>
-                        <Button maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#goToFirstPage" prefHeight="20.0" prefWidth="35.0" style="-fx-background-color: #fff; -fx-border-color: #000;" text="1">
-                           <HBox.margin>
-                              <Insets left="5.0" top="5.0" />
-                           </HBox.margin>
-                        </Button>
-                        <Button maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#goToSecondPage" prefHeight="20.0" prefWidth="35.0" style="-fx-background-color: #fff; -fx-border-color: #000;" text="2">
-                           <HBox.margin>
-                              <Insets left="5.0" top="5.0" />
-                           </HBox.margin>
-                        </Button>
-                        <Button maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#goToThirdPage" prefHeight="20.0" prefWidth="35.0" style="-fx-background-color: #fff; -fx-border-color: #000;" text="3">
-                           <HBox.margin>
-                              <Insets left="5.0" top="5.0" />
-                           </HBox.margin>
-                        </Button>
-                        <Button maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#goToNextPage" prefHeight="20.0" prefWidth="40.0" style="-fx-background-color: #fff; -fx-border-color: #000;" text="&gt;">
-                           <HBox.margin>
-                              <Insets left="5.0" top="5.0" />
-                           </HBox.margin>
-                        </Button>
-                        <Button maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#goToLastPage" prefHeight="20.0" prefWidth="40.0" style="-fx-background-color: #fff; -fx-border-color: #000;" text="&gt;&gt;">
-                           <HBox.margin>
-                              <Insets left="5.0" top="5.0" />
-                           </HBox.margin>
-                        </Button>
-                     </children>
-                  </HBox>
+                  </VBox>
                </children>
-            </VBox>
+            </HBox>
          </children>
       </AnchorPane>
    </children>

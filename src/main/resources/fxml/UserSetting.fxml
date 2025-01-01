@@ -25,57 +25,14 @@
       </AnchorPane>
       <AnchorPane layoutX="20.0" layoutY="141.0" prefHeight="472.0" prefWidth="219.0" style="-fx-border-color: #000;">
          <children>
-            <VBox prefHeight="197.0" prefWidth="205.0">
+            <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="419.0" prefWidth="220.0" spacing="15.0">
                <children>
-                  <Text onMouseClicked="#userHomepageClicked" strokeType="OUTSIDE" strokeWidth="0.0" text="ホームページ" textAlignment="CENTER" wrappingWidth="214.13671875">
-                     <font>
-                        <Font size="25.0" />
-                     </font>
-                     <VBox.margin>
-                        <Insets top="15.0" />
-                     </VBox.margin>
-                  </Text>
-                  <Text onMouseClicked="#userTemplateClicked" strokeType="OUTSIDE" strokeWidth="0.0" text="テンプレート" textAlignment="CENTER" wrappingWidth="214.13671875">
-                     <font>
-                        <Font size="25.0" />
-                     </font>
-                     <VBox.margin>
-                        <Insets top="15.0" />
-                     </VBox.margin>
-                  </Text>
-                  <Text onMouseClicked="#templateSaveClicked" strokeType="OUTSIDE" strokeWidth="0.0" text="テンプレート保存" textAlignment="CENTER" wrappingWidth="214.13671875">
-                     <font>
-                        <Font size="25.0" />
-                     </font>
-                     <VBox.margin>
-                        <Insets top="15.0" />
-                     </VBox.margin>
-                  </Text>
-               </children>
-            </VBox>
-            <VBox layoutX="2.0" layoutY="239.0" prefHeight="212.0" prefWidth="195.0">
-               <children>
-                  <Text onMouseClicked="#userProfileClicked" strokeType="OUTSIDE" strokeWidth="0.0" text="プロファイル" textAlignment="CENTER" wrappingWidth="214.13671875">
-                     <font>
-                        <Font size="25.0" />
-                     </font>
-                  </Text>
-                  <Text onMouseClicked="#settingClicked" strokeType="OUTSIDE" strokeWidth="0.0" text="設定" textAlignment="CENTER" underline="true" wrappingWidth="214.13671875">
-                     <font>
-                        <Font size="25.0" />
-                     </font>
-                     <VBox.margin>
-                        <Insets top="15.0" />
-                     </VBox.margin>
-                  </Text>
-                  <Text onMouseClicked="#logOut" strokeType="OUTSIDE" strokeWidth="0.0" text="ログアウト" textAlignment="CENTER" wrappingWidth="214.13671875">
-                     <font>
-                        <Font size="25.0" />
-                     </font>
-                     <VBox.margin>
-                        <Insets top="15.0" />
-                     </VBox.margin>
-                  </Text>
+                  <Text onMouseClicked="#userHomepageClicked" style="-fx-font-size: 20; -fx-fill: #333333;" text="ホームページ" />
+                  <Text onMouseClicked="#userTemplateClicked" style="-fx-font-size: 20; -fx-fill: #333333;" text="テンプレート" />
+                  <Text onMouseClicked="#templateSaveClicked" style="-fx-font-size: 20; -fx-fill: #333333;" text="テンプレート保存" />
+                  <Text onMouseClicked="#userProfileClicked" style="-fx-font-size: 20; -fx-fill: #333333; margin-top: 30;" text="プロファイル" />
+                  <Text onMouseClicked="#settingClicked" style="-fx-font-size: 20; -fx-font-weight: bold; -fx-fill: #0078d7; -fx-underline: true;" text="設定" />
+                  <Text onMouseClicked="#logOut" style="-fx-font-size: 20; -fx-fill: #d70000;" text="ログアウト" />
                </children>
             </VBox>
          </children>

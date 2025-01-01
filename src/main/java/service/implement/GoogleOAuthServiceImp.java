@@ -22,7 +22,7 @@ public class GoogleOAuthServiceImp implements GoogleOAuthService {
 
     private static final String CLIENT_ID = "511934853040-iarp2hdgam5rd9sarc50arq7rj3ona0c.apps.googleusercontent.com";
     private static final String CLIENT_SECRET = "your_";
-    private static final String REDIRECT_URI = "https://www.example.com/";
+    private static final String REDIRECT_URI = "https://i.sstatic.net/gqKFh.png";
     private static final String USER_INFO_URL = "https://www.googleapis.com/oauth2/v1/userinfo?alt=json";
 
     private GoogleAuthorizationCodeFlow flow;

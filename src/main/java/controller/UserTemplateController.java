@@ -1,24 +1,28 @@
 package main.java.controller;
 
 import java.io.IOException;
-import java.util.List;
 
+import java.util.List;
 import javafx.fxml.FXML;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
-import main.java.model.Template;
-import main.java.service.implement.TemplateServiceImpl;
 import javafx.event.ActionEvent;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.scene.control.cell.PropertyValueFactory;
+import main.java.model.Template;
+import main.java.model.User;
+import main.java.session.SessionManager;
+import main.java.service.implement.TemplateServiceImpl;
+import main.java.service.TemplateDetailSerice;
+import main.java.service.implement.TemplateDetailServiceImp;
 
 public class UserTemplateController extends BaseController {
-
+	
     @FXML
     private TableView<Template> templateTableView; // Bảng chứa danh sách template
 
@@ -39,8 +43,11 @@ public class UserTemplateController extends BaseController {
 
     @FXML
     private HBox paginationButtons; // HBox chứa các nút phân trang
+    
+    private User currentUser = new User();
 
     private final TemplateServiceImpl templateService = new TemplateServiceImpl(); // Service quản lý template
+    private final TemplateDetailSerice templateDetailService = new TemplateDetailServiceImp();
     private final ObservableList<Template> templateList = FXCollections.observableArrayList(); // Danh sách template đầy đủ
     public static Template uesrSelectedTemplate;
     private FilteredList<Template> filteredList; // Danh sách template đã lọc
@@ -51,6 +58,7 @@ public class UserTemplateController extends BaseController {
 
     @FXML
     public void initialize() {
+    	currentUser = SessionManager.getInstance().getCurrentUser();
         setupTableColumns();
         loadTemplatesIntoTableView();
         setupSearch();
@@ -157,6 +165,15 @@ public class UserTemplateController extends BaseController {
     void viewBtnEnter(ActionEvent event) throws IOException {
     	uesrSelectedTemplate = templateTableView.getSelectionModel().getSelectedItem();
     	switchToUserTemplateView(event);
+    }
+    
+    @FXML
+    void saveBtnEnter(ActionEvent event) {
+    	System.out.println(1);
+    	uesrSelectedTemplate = templateTableView.getSelectionModel().getSelectedItem();
+    	String temText = templateDetailService.getTemplateTextByTemplate(uesrSelectedTemplate);
+    	String temSetsumei = templateDetailService.getTemplateSetsumeiByTemplate(uesrSelectedTemplate);
+    	templateDetailService.createTemplateDetail(currentUser.getId(), uesrSelectedTemplate.getTemplateTitle(), uesrSelectedTemplate.getTemplateDes(), temText, temSetsumei);
     }
 
     // Các phương thức điều hướng

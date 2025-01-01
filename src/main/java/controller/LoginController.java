@@ -11,6 +11,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.web.WebView;
@@ -27,7 +28,7 @@ public class LoginController extends BaseController {
     private Button loginButton;
 
     @FXML
-    private TextField passwordField;
+    private PasswordField passwordField;
 
     @FXML
     private TextField usernameField;
@@ -95,31 +96,29 @@ public class LoginController extends BaseController {
 
     @FXML
     void loginByGoogleEnter(ActionEvent event) throws IOException {
-    	webView.setVisible(true);
+        webView.setVisible(true);
         try {
             GoogleOAuthService googleOAuthService = new GoogleOAuthServiceImp();
             String googleLoginUrl = googleOAuthService.getOAuthUrl();
-            printCurrentURL(event);
             webView.getEngine().load(googleLoginUrl);
-            printCurrentURL(event);
-            
-//            showAlert(AlertType.CONFIRMATION, "da dang ky thanh cong", "Đã đăng ký thành công user :"+ ", mật khẩu mặc định của bạn là 123456");
-//            switchToUserHomepage(event);
+
+            // Lắng nghe sự thay đổi URL
+            webView.getEngine().locationProperty().addListener((observable, oldValue, newValue) -> {
+                if (newValue.contains("https://i.sstatic.net/gqKFh.png")) { 
+                    try {
+                    	User user = userService.getUserByUsername("user_09");
+                        SessionManager.getInstance().setCurrentUser(user);
+                        SessionManager.getInstance().setCurrentUserService(userService);
+                        switchToUserHomepage(event);
+                    } catch (Exception e) {
+                        showAlert(AlertType.ERROR, "エラー", "ホームページへの切り替え中にエラーが発生しました.");
+                    }
+                }
+            });
         } catch (Exception e) {
             showAlert(AlertType.ERROR, "エラー", "Googleログイン中にエラーが発生しました.");
         }
     }
-    
-    
-    @FXML
-    void printCurrentURL(ActionEvent event) {
-        // Lấy URL hiện tại từ WebView
-        String currentURL = webView.getEngine().getLocation();
-        
-        // In ra URL
-        System.out.println("Current URL: " + currentURL);
-    }
-
 
     @FXML
     void passwordRecoveryClick(MouseEvent event) throws IOException {
@@ -128,7 +127,6 @@ public class LoginController extends BaseController {
 
     @FXML
     void signupClick(MouseEvent event) throws IOException {
-    	System.out.println("1");
         switchToSignupPage(event);
     }
 

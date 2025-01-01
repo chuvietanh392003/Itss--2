@@ -14,7 +14,7 @@ import javafx.print.PrinterJob;
 import javafx.scene.text.Text;
 import java.io.IOException;
 
-public class UserTemplateViewController extends BaseController {
+public class UserTemplatesSaveToViewController extends BaseController {
 
     @FXML
     private TextArea setsumeiTextArea;
@@ -22,7 +22,7 @@ public class UserTemplateViewController extends BaseController {
     @FXML
     private TextArea templateTextArea;
 
-    Template userSelectedTemplate = UserTemplateController.uesrSelectedTemplate;
+    Template userSelectedTemplate = UserTemplateSaveController.uesrSelectedTemplate;
     TemplateDetailSerice templateDetailSerice = new TemplateDetailServiceImp();
 
     @FXML
@@ -37,7 +37,7 @@ public class UserTemplateViewController extends BaseController {
     @FXML
     void cancelEnter(Event event) throws IOException {
         // Trở lại TemplateManageController
-        switchToUserTemplate(event);
+        switchToUserTemplateSave(event);
     }
 
     @FXML

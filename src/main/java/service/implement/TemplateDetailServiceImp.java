@@ -33,4 +33,9 @@ public class TemplateDetailServiceImp implements TemplateDetailSerice {
         // Gọi repository để lấy template_setsumei từ TemplateDetail
         return repository.getTemplateSetsumeiByTemplate(template);
     }
+    
+    @Override
+    public void createTemplateDetail(int id, String title, String description, String templateText, String setsumeiText) {
+    	repository.createTemplateDetail(id ,title, description, templateText, setsumeiText);
+    }
 }

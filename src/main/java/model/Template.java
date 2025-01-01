@@ -1,7 +1,7 @@
 package main.java.model;
 
 public class Template {
-    private int templateId;       
+    private int templateId;  
     private String templateTitle;
     private String templateDes;
     private int viewCount;  
@@ -15,8 +15,8 @@ public class Template {
     public Template(String templateTitle, String templateDescription) {
         this.templateTitle = templateTitle;
         this.templateDes = templateDescription;
-        this.viewCount = 0;  // Mặc định viewCount là 0 khi tạo mới
-        this.saveCount = 0;  // Mặc định saveCount là 0 khi tạo mới
+        this.viewCount = 0;  
+        this.saveCount = 0;  
     }
 
     public int getTemplateId() {

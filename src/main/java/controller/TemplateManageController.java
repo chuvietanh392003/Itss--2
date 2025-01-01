@@ -128,7 +128,7 @@ public class TemplateManageController extends BaseController {
     }
     
     @FXML
-    void goToThird(ActionEvent event) {
+    void goToThirdPage(ActionEvent event) {
         currentPage = 3;
         setupPagination();
     }
